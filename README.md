@@ -7,22 +7,22 @@ Startup Copilot is a multi-agent web application designed to guide founders from
 Check out our Demo Video
 
 
-<p align="center">
+<p>
   <img src="https://github.com/user-attachments/assets/f7ed9e63-e2ca-4866-be1c-47a8bb7a65b0" width="400" />
   <img src="https://github.com/user-attachments/assets/5dfe3ff4-de18-4219-9be9-a76e45af8555" width="400" />
 
 </p>
-<p align="center">
+<p>
 
   <img src="https://github.com/user-attachments/assets/c74b5008-e344-4d91-bd10-d53c51f4a78d" width="400" />
   <img src="https://github.com/user-attachments/assets/9e5e3185-aebc-42c4-ab13-316cea83bfa7" width="400" />
 </p>
-<p align="center">
+<p>
   <img src="https://github.com/user-attachments/assets/ef3e7e60-fbf9-4755-8106-d2e03e683a39" width="400" />
   <img src="https://github.com/user-attachments/assets/7dc67c9f-8fa6-492c-be9a-0afc3fec2cdc" width="400" />
  
 </p>
-<p align="center">
+<p>
  
   <img src="https://github.com/user-attachments/assets/771134c5-96f1-42a1-a770-b12e63b742dc" width="400" />
   <img src="https://github.com/user-attachments/assets/8cbcc38f-6788-4793-a92f-0fc6c1dba5a9" width="400" />
