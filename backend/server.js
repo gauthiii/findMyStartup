@@ -10,7 +10,9 @@ import {
   runAzureRiskAnalysis,
   runAzureTechStack,
   runAzureGTMPlan,
-  runAzureRAG
+  runAzureRAG,
+  runAzureFundingStrategy,
+  runAzureRegulatoryScan // ← ✅ Add this line
 } from './azure.js'; // ✅ Azure split per agent
 
 dotenv.config();
@@ -104,6 +106,28 @@ app.post('/api/azure/casestudy', async (req, res) => {
     res.status(500).json({ error: 'Failed to get case studies via Azure.' });
   }
 });
+
+
+app.post('/api/azure/funding', async (req, res) => {
+    try {
+      const raw = await runAzureFundingStrategy(req.body.input);
+      res.json(JSON.parse(cleanJSON(raw)));
+    } catch (err) {
+      console.error('Azure Funding Strategy Error:', err.message);
+      res.status(500).json({ error: 'Failed to generate funding strategy via Azure.' });
+    }
+  });
+
+  app.post('/api/azure/regulatory', async (req, res) => {
+    try {
+      const raw = await runAzureRegulatoryScan(req.body.input);
+      res.json(JSON.parse(cleanJSON(raw)));
+    } catch (err) {
+      console.error('Azure Regulatory Scan Error:', err.message);
+      res.status(500).json({ error: 'Failed to perform regulatory scan via Azure.' });
+    }
+  });
+  
 
 app.listen(port, () => {
   console.log(`🚀 Startup Copilot running at http://localhost:${port}`);

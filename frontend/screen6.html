@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Startup-ult – Regulatory Compliance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="script.js"></script>
+</head>
+<style>
+  body {
+    min-height: auto;
+  }
+</style>
+<body class="bg-gradient-to-b from-[#dcedc1] via-[#ffd3b6] to-[#ffaaa5] font-sans text-center min-h-screen overflow-y-auto">
+
+  <div class="min-h-screen flex flex-col items-center justify-center space-y-6 p-4">
+    <div style="height: 20vh;"></div>
+    
+    <h1 class="text-3xl font-bold text-gray-800">🧾 Regulatory Scan</h1>
+    <p class="text-md text-gray-800" id="recalledIdea6"></p>
+
+    <button onclick="handleRegulatoryScan()" class="bg-[#355c7d] text-white px-6 py-2 rounded-full">
+      Run Compliance Advisor
+    </button>
+    
+    <button onclick="goBackToModelSelection()" class="text-sm underline">🔄 Change Model</button>
+    
+    <div id="output6" class="max-w-4xl mt-6 w-full px-4"></div>
+
+    <div style="height: 20vh;"></div>
+  </div>
+
+</body>
+</html>

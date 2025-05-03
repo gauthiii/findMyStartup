@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
       case "gtm_plan": return "/api/azure/market";
       case "rag_case_study": return "/api/azure/casestudy";
       case "risk_analysis": return "/api/azure/risk"; // ✅ Added
+      case "funding_strategy": return "/api/azure/funding";
+      case "regulatory_scan": return "/api/azure/regulatory"; // ✅ NEW
+
       default: return "";
     }
   }
@@ -321,7 +324,147 @@ document.addEventListener("DOMContentLoaded", () => {
               
                   </section>
                 `;
-              
+
+                case "funding_strategy":
+                    return `
+                      <section class="max-w-5xl mx-auto space-y-12 text-gray-800 animate-fade-in px-4">
+                  
+                        <!-- Title -->
+                        <div class="text-left">
+                          <h2 class="text-4xl font-extrabold text-gray-900">Funding Strategy</h2>
+                          <p class="text-gray-600 mt-2 text-md border-l-4 pl-4 border-[#38bdf8]">A lean but actionable roadmap to raise capital and build investor confidence.</p>
+                        </div>
+                  
+                        <!-- Recommended Sources -->
+                        <div>
+                          <h3 class="text-2xl font-bold mb-4 text-slate-800 border-b pb-2">Top Sources Based on Fit</h3>
+                          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            ${result.recommendedSources.map(s => `
+                              <div class="bg-white rounded-xl border-t-4 border-blue-500 p-5 shadow-sm hover:shadow-lg transition space-y-2">
+                                <h4 class="text-lg font-semibold text-gray-900">${s.name}</h4>
+                                <div class="text-sm text-gray-600">
+                                  <div class="mb-1">
+                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Funding: ${s.fundingRange}</span>
+                                    <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Fit: ${s.fit}</span>
+                                  </div>
+                                  <p class="text-sm text-gray-700 mt-2"><span class="font-semibold text-gray-800">Apply:</span> ${s.howToApply}</p>
+                                </div>
+                              </div>
+                            `).join("")}
+                          </div>
+                        </div>
+                  
+                        <!-- Networking Strategy -->
+                        <div class="bg-gray-50 rounded-xl p-6 border shadow-md space-y-6">
+                          <h3 class="text-xl font-bold text-gray-800 border-b pb-2">Investor Discovery & Outreach Strategy</h3>
+                  
+                          <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wide">Investor Discovery</h4>
+                              <div class="flex flex-wrap gap-2 mt-2">
+                                ${result.networkingTips.investorPlaces.map(p => `
+                                  <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">${p}</span>
+                                `).join("")}
+                              </div>
+                            </div>
+                  
+                            <div>
+                              <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wide">Cold Outreach Templates</h4>
+                              <div class="space-y-2 mt-2">
+                                ${result.networkingTips.dmTemplates.map((t, i) => `
+                                  <div class="bg-white border-l-4 border-indigo-400 p-3 rounded shadow text-sm">
+                                    <p class="text-gray-700"><strong>Template ${i + 1}:</strong> ${t}</p>
+                                  </div>
+                                `).join("")}
+                              </div>
+                            </div>
+                          </div>
+                  
+                          <div class="pt-4 border-t">
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-1">Pitch Deck Prep</h4>
+                            <div class="bg-white p-4 rounded border shadow text-sm text-gray-700">
+                              ${result.networkingTips.pitchDeckAdvice}
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <!-- Checklist Section -->
+                        <div class="bg-white border-l-4 border-green-600 p-6 rounded-lg shadow-md space-y-3">
+                          <h3 class="text-lg font-bold text-gray-800 mb-2">Checklist: How to Raise $25k–$100k in 30 Days</h3>
+                          <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700">
+                            ${result.fundraisingChecklist.map(item => `
+                              <div class="flex items-start gap-2 bg-green-50 p-3 rounded shadow-sm border-l-4 border-green-300">
+                                <span class="w-2 h-2 mt-2 bg-green-500 rounded-full"></span>
+                                <p>${item}</p>
+                              </div>
+                            `).join("")}
+                          </div>
+                        </div>
+                  
+                      </section>
+                    `;
+
+
+                    case "regulatory_scan":
+                        return `
+                          <section class="max-w-5xl mx-auto space-y-12 text-gray-800 animate-fade-in px-4">
+                      
+                            <!-- Title -->
+                            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-red-500">
+                              <h2 class="text-3xl font-extrabold text-gray-900">🧾 Compliance Overview</h2>
+                              <p class="text-gray-600 mt-2">Here's your regulatory landscape scan based on the startup category.</p>
+                            </div>
+                      
+                            <!-- Regulations + Checklists -->
+                            <div class="space-y-6">
+                              ${result.regulations.map(reg => `
+                                <div class="bg-white border-l-4 border-blue-500 p-5 rounded-lg shadow">
+                                  <h3 class="text-xl font-semibold text-blue-700">${reg.name}</h3>
+                                  <ul class="list-disc ml-6 text-gray-800 mt-2 space-y-1">
+                                    ${reg.checklist.map(item => `<li>${item}</li>`).join("")}
+                                  </ul>
+                                </div>
+                              `).join("")}
+                            </div>
+                      
+                            <!-- Common Pitfalls -->
+                            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded shadow-md">
+                              <h3 class="text-xl font-bold text-yellow-700 mb-3">⚠️ Common Pitfalls</h3>
+                              <ul class="space-y-3 text-gray-800">
+                                ${result.commonPitfalls.map(p => `
+                                  <li class="flex items-start gap-2">
+                                    <span class="text-yellow-500 text-xl mt-1">•</span>
+                                    <span>${p}</span>
+                                  </li>
+                                `).join("")}
+                              </ul>
+                            </div>
+                      
+                            <!-- Suggested Practices -->
+                            <div class="bg-[#f0f9ff] border-l-4 border-indigo-400 p-6 rounded-lg shadow space-y-3">
+                              <h3 class="text-xl font-bold text-indigo-700">🛠️ Tools & Best Practices</h3>
+                              <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-800">
+                                ${result.suggestedPractices.map(t => `
+                                  <div class="bg-white rounded border-l-4 border-indigo-300 p-4 shadow-sm flex items-center gap-3">
+                                    <span class="text-indigo-600 text-lg">✔</span>
+                                    <span>${t}</span>
+                                  </div>
+                                `).join("")}
+                              </div>
+                            </div>
+                      
+                            <!-- Reference Links -->
+                            <div class="bg-white p-5 rounded-lg border shadow-md">
+                              <h3 class="text-xl font-bold text-gray-800 mb-2">🔗 Reference Links</h3>
+                              <ul class="list-disc ml-6 text-blue-700 space-y-1">
+                                ${result.referenceLinks.map(link => `<li><a href="${link}" target="_blank" class="underline hover:text-blue-500">${link}</a></li>`).join("")}
+                              </ul>
+                            </div>
+                      
+                          </section>
+                        `;
+                      
+                  
       default:
         return `<pre>${JSON.stringify(result, null, 2)}</pre>`;
     }
@@ -395,6 +538,18 @@ function handleRiskAnalysis() {
   
   // 📚 Agent 4 – Case Studies
   function handleCaseStudy() {
-    fetchAgent("rag_case_study", "output4", "");
+    fetchAgent("rag_case_study", "output4", "continueBtn4");
   }
+  
+  function handleFundingStrategy() {
+    document.getElementById("recalledIdea5").textContent = `Idea: ${userIdea}`;
+    fetchAgent("funding_strategy", "output5", "continueBtn5");
+  }
+
+  // 🧾 Agent 6 – Regulatory Scan
+function handleRegulatoryScan() {
+    document.getElementById("recalledIdea6").textContent = `Idea: ${userIdea}`;
+    fetchAgent("regulatory_scan", "output6", ""); // no continue button
+  }
+  
   
