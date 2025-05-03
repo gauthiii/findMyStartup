@@ -7,13 +7,20 @@ Startup Copilot is a multi-agent web application designed to guide founders from
 Check out our Demo Video
 
 
-<img width="800" alt="Screenshot 2025-05-03 at 4 21 03 PM" src="https://github.com/user-attachments/assets/f7ed9e63-e2ca-4866-be1c-47a8bb7a65b0" />
-<img width="800" alt="Screenshot 2025-05-03 at 4 21 20 PM" src="https://github.com/user-attachments/assets/5dfe3ff4-de18-4219-9be9-a76e45af8555" />
-<img width="800" alt="Screenshot 2025-05-03 at 4 21 30 PM" src="https://github.com/user-attachments/assets/c74b5008-e344-4d91-bd10-d53c51f4a78d" />
-<img width="800" alt="Screenshot 2025-05-03 at 4 21 38 PM" src="https://github.com/user-attachments/assets/9e5e3185-aebc-42c4-ab13-316cea83bfa7" />
-<img width="800" alt="Screenshot 2025-05-03 at 4 21 45 PM" src="https://github.com/user-attachments/assets/ef3e7e60-fbf9-4755-8106-d2e03e683a39" />
-<img width="800" alt="Screenshot 2025-05-03 at 4 21 59 PM" src="https://github.com/user-attachments/assets/7dc67c9f-8fa6-492c-be9a-0afc3fec2cdc" />
-<img width="800" alt="Screenshot 2025-05-03 at 4 22 20 PM" src="https://github.com/user-attachments/assets/771134c5-96f1-42a1-a770-b12e63b742dc" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f7ed9e63-e2ca-4866-be1c-47a8bb7a65b0" width="300" />
+  <img src="https://github.com/user-attachments/assets/5dfe3ff4-de18-4219-9be9-a76e45af8555" width="300" />
+  <img src="https://github.com/user-attachments/assets/c74b5008-e344-4d91-bd10-d53c51f4a78d" width="300" />
+  <img src="https://github.com/user-attachments/assets/9e5e3185-aebc-42c4-ab13-316cea83bfa7" width="300" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ef3e7e60-fbf9-4755-8106-d2e03e683a39" width="300" />
+  <img src="https://github.com/user-attachments/assets/7dc67c9f-8fa6-492c-be9a-0afc3fec2cdc" width="300" />
+  <img src="https://github.com/user-attachments/assets/771134c5-96f1-42a1-a770-b12e63b742dc" width="300" />
+  <img src="https://github.com/user-attachments/assets/8cbcc38f-6788-4793-a92f-0fc6c1dba5a9" width="300" />
+</p>
+
+
 
 
 
