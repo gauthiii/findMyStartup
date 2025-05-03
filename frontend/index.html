@@ -1,0 +1,68 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Copilot 🚀</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    @keyframes fadeInUp {
+      from { transform: translate3d(0, 40px, 0); opacity: 0; }
+      to { transform: translate3d(0, 0, 0); opacity: 1; }
+    }
+    .fade-in-up { animation: fadeInUp 1s ease-out both; }
+    .fade-delay-1 { animation-delay: 0.3s; }
+    .fade-delay-2 { animation-delay: 0.6s; }
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+    .star { filter: blur(0.6px); }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-[#a8e6cf] via-[#dcedc1] to-[#ffd3b6] relative min-h-screen overflow-hidden font-sans">
+
+<!-- Background Stars -->
+<div class="absolute inset-0">
+  <div class="w-full h-full relative animate__animated animate__fadeIn">
+    <span class="absolute star rounded-full bg-white opacity-50" style="width:4px; height:4px; top:7%; left:12%;"></span>
+    <span class="absolute star rounded-full bg-white opacity-40" style="width:3px; height:3px; top:18%; left:78%;"></span>
+    <span class="absolute star rounded-full bg-white opacity-60" style="width:2px; height:2px; top:25%; left:33%;"></span>
+    <span class="absolute star rounded-full bg-white opacity-50" style="width:3px; height:3px; top:40%; left:55%;"></span>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-12 p-10 h-screen">
+
+  <!-- Left Panel -->
+  <div class="text-black max-w-lg fade-in-up fade-delay-1">
+    <h1 class="text-5xl font-extrabold mb-6">Startup Copilot 🚀</h1>
+    <h2 class="text-2xl font-light mb-8">From Idea to MVP using LLMs</h2>
+
+    <input id="ideaInput" type="text" placeholder="Enter Startup Idea (e.g. Uber for Pets)"
+      class="w-full px-4 py-3 rounded-full bg-white/40 backdrop-blur-md text-black placeholder-black/50 focus:outline-none focus:ring-2 focus:ring-white-400 transition" />
+
+    <select id="modelSelect" class="w-full px-4 py-3 mt-4 rounded-full bg-white/70 backdrop-blur-md text-black focus:outline-none focus:ring-2 focus:ring-white-400">
+      <option value="gemini">Gemini</option>
+      <option value="azure">Azure OpenAI</option>
+    </select>
+
+    <div class="space-y-3 mt-6">
+      <button onclick="fetchAgent('idea_parser')" class="w-full py-3 rounded-full bg-[#ff8b94] hover:bg-[#ff6f69] text-white font-bold transition">🧠 Parse Idea</button>
+      <button onclick="fetchAgent('tech_stack')" class="w-full py-3 rounded-full bg-[#ffb347] hover:bg-[#ff9933] text-white font-bold transition">🧰 Suggest Tech Stack</button>
+      <button onclick="fetchAgent('gtm_plan')" class="w-full py-3 rounded-full bg-[#88d8b0] hover:bg-[#66bb99] text-white font-bold transition">📈 Go-To-Market Plan</button>
+      <button onclick="fetchAgent('rag_case_study')" class="w-full py-3 rounded-full bg-[#84b6f4] hover:bg-[#5a9bd4] text-white font-bold transition">📚 Show Case Studies</button>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="bg-white/30 backdrop-blur-lg p-12 rounded-3xl shadow-2xl max-w-5xl w-full fade-in-up fade-delay-2 overflow-y-auto max-h-[80vh]">
+    <h2 class="text-4xl text-center font-bold text-black mb-8">🚀 Agent Output</h2>
+    <div id="agentOutput" class="text-black text-base space-y-8 whitespace-pre-wrap"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
