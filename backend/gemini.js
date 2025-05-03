@@ -1,68 +1,126 @@
 import 'dotenv/config';
+const axios = (await import('axios')).default;
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-const axios = (await import('axios')).default;
-
 const promptMap = {
   idea_parser: (idea) => `
-You are a startup strategist. Break down the idea "${idea}" into:
-- coreProblem
-- targetUser
-- painPoints
+You are a startup idea review agent with a personality. Your job is to break down the user's startup idea, extract the core problem, identify the target users, list their pain points, and assess if the idea already exists in the market.
 
-Respond strictly in clean JSON format like:
+Be analytical but also witty. For the "review" section, write a longer, insightful summary with a touch of Deadpool-style humor — think smart, playful, and real — but stay respectful and avoid rudeness or profanity. Use pop culture references *only* if relevant, and stay on-topic.
+
+Also suggest improvements to the idea and alternatives if it's too generic.
+
+Startup Idea: "${idea}"
+
+Respond strictly in this JSON format:
 {
   "coreProblem": "...",
   "targetUser": "...",
-  "painPoints": ["...", "..."]
+  "painPoints": ["..."],
+  "review": "...",
+  "existingAlternatives": "...",
+  "suggestedImprovements": "..."
 }
-Do not add explanations or markdown.
-  `,
-  tech_stack: (idea) => `
-You are a startup tech advisor. Recommend a tech stack for "${idea}" with:
-- frontend
-- backend
-- database
-- optionalTools (e.g. Azure, APIs)
+  `.trim(),
 
-Output in clean JSON format like:
+  tech_stack: (idea) => `
+You are a startup tech advisor. Recommend a tech stack for the startup idea below, keeping in mind practicality, scalability, and simplicity for early-stage development.
+
+Startup Idea: "${idea}"
+
+Respond strictly in JSON:
 {
   "frontend": "...",
   "backend": "...",
   "database": "...",
   "optionalTools": ["...", "..."]
 }
-Only output raw JSON. No comments or markdown.
-  `,
+Only JSON. No explanation.
+  `.trim(),
+
   gtm_plan: (idea) => `
-You are a growth expert. Provide a go-to-market plan for "${idea}" with:
-- earlyAdopters
-- distributionChannels
-- growthTactics
+You are a go-to-market strategist for early-stage startups.
 
-Respond in raw JSON format like:
+Given the startup idea below, generate a lean but complete Go-To-Market (GTM) plan. Focus on clarity, brevity, and founder-actionability. Think like a YC-backed founder — no fluff, no filler. Just the strategy.
+
+Startup Idea: "${idea}"
+
+Your response must include the following 8 sections inside a single JSON object:
 {
-  "earlyAdopters": "...",
-  "distributionChannels": ["...", "..."],
-  "growthTactics": ["...", "..."]
+  "targetCustomerPersona": "...",
+  "marketLandscape": "...",
+  "valueProposition": "...",
+  "salesChannels": ["...", "..."],
+  "pricingStrategy": "...",
+  "distributionModel": "...",
+  "customerSupport": "...",
+  "launchTimeline": ["...", "...", "..."]
 }
-No explanations or markdown.
-  `,
+Only valid JSON.
+  `.trim(),
+
   rag_case_study: (idea) => `
-You are a research agent. Pull startup launch patterns similar to "${idea}" from YC or TechCrunch examples. Include:
-- similarStartups
-- theirStrategy
-- keyLearnings
+You are a Case Study Agent that performs deep domain research to help startup founders understand the landscape they are entering.
 
-Format strictly in JSON like:
+Given the startup idea: "${idea}", perform the following tasks:
+
+1. Retrieve or reason about 5 similar real-world startups in the same category or problem space. For each, include:
+   - Name
+   - Summary
+   - Funding stage or outcome (e.g., Success, Failure, Pivot)
+   - Key lessons from their trajectory
+
+2. Identify and summarize relevant case studies, whitepapers, or academic research:
+   - Highlight core findings (e.g., success rates, technical viability, adoption challenges)
+   - Clearly link these insights back to the startup idea
+
+3. Evaluate the competitive landscape:
+   - Major players and their strategies
+   - Gaps or underserved areas
+   - Dominant incumbents (if any)
+
+4. Assess market saturation:
+   - Categorize as High, Medium, or Low
+   - Justify with number of startups, funding trends, and outcome patterns
+
+5. Provide a conclusion:
+   - Is this a promising opportunity space?
+   - What niche or angle looks most viable?
+   - What barriers to entry or resource demands should be expected?
+
+Avoid hallucination. Use known examples, trends, or real sources where possible. If data is unclear, explicitly say so.
+
+Return strictly in the following JSON format:
 {
-  "similarStartups": ["...", "..."],
-  "theirStrategy": "...",
-  "keyLearnings": ["...", "..."]
+  "similarStartups": [
+    {
+      "name": "...",
+      "summary": "...",
+      "outcome": "...",
+      "keyLesson": "..."
+    }
+  ],
+  "researchInsights": [
+    {
+      "source": "...",
+      "finding": "...",
+      "relevance": "..."
+    }
+  ],
+  "competitionSummary": {
+    "majorPlayers": ["...", "..."],
+    "marketGaps": "...",
+    "dominantIncumbents": "..."
+  },
+  "saturationLevel": "High | Medium | Low",
+  "conclusion": {
+    "isPromising": true,
+    "viableAngle": "...",
+    "barriersToEntry": "..."
+  }
 }
-No markdown. Only raw JSON.
-  `
+  `.trim()
 };
 
 export async function runGeminiAgent(agentType, idea) {

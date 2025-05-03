@@ -3,8 +3,15 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { runGeminiAgent } from './gemini.js';
-import { runAzureAgent } from './azure.js';
+
+import { runGeminiAgent } from './gemini.js'; // ✅ Gemini stays as-is
+import {
+  runAzureIdeaParser,
+  runAzureRiskAnalysis,
+  runAzureTechStack,
+  runAzureGTMPlan,
+  runAzureRAG
+} from './azure.js'; // ✅ Azure split per agent
 
 dotenv.config();
 
@@ -26,6 +33,7 @@ function cleanJSON(text) {
   return text.replace(/```json|```/g, '').trim();
 }
 
+// 🔹 Shared Gemini Agent Endpoint
 app.post('/api/agent', async (req, res) => {
   const { agentType, input } = req.body;
   const model = req.query.model || 'gemini';
@@ -35,17 +43,65 @@ app.post('/api/agent', async (req, res) => {
   }
 
   try {
-    const raw =
-      model === 'azure'
-        ? await runAzureAgent(agentType, input)
-        : await runGeminiAgent(agentType, input);
-
+    const raw = await runGeminiAgent(agentType, input);
     const cleaned = cleanJSON(raw);
     const parsed = JSON.parse(cleaned);
     res.json({ agentType, result: parsed });
   } catch (err) {
-    console.error('Agent Error:', err.message);
-    res.status(500).json({ error: `Failed to generate output from ${model} agent.` });
+    console.error('Gemini Agent Error:', err.message);
+    res.status(500).json({ error: 'Failed to generate output from Gemini agent.' });
+  }
+});
+
+// 🔹 Azure-Specific Routes (clean + REST-style)
+app.post('/api/azure/idea', async (req, res) => {
+  try {
+    const raw = await runAzureIdeaParser(req.body.input);
+    res.json(JSON.parse(cleanJSON(raw)));
+  } catch (err) {
+    console.error('Azure Idea Error:', err.message);
+    res.status(500).json({ error: 'Failed to parse idea via Azure.' });
+  }
+});
+
+app.post('/api/azure/risk', async (req, res) => {
+    try {
+      const raw = await runAzureRiskAnalysis(req.body.input);
+      res.json(JSON.parse(cleanJSON(raw)));
+    } catch (err) {
+      console.error('Azure Risk Agent Error:', err.message);
+      res.status(500).json({ error: 'Failed to assess risk via Azure.' });
+    }
+  });
+  
+
+app.post('/api/azure/tech', async (req, res) => {
+  try {
+    const raw = await runAzureTechStack(req.body.input);
+    res.json(JSON.parse(cleanJSON(raw)));
+  } catch (err) {
+    console.error('Azure Tech Stack Error:', err.message);
+    res.status(500).json({ error: 'Failed to suggest tech stack via Azure.' });
+  }
+});
+
+app.post('/api/azure/market', async (req, res) => {
+  try {
+    const raw = await runAzureGTMPlan(req.body.input);
+    res.json(JSON.parse(cleanJSON(raw)));
+  } catch (err) {
+    console.error('Azure GTM Error:', err.message);
+    res.status(500).json({ error: 'Failed to generate GTM plan via Azure.' });
+  }
+});
+
+app.post('/api/azure/casestudy', async (req, res) => {
+  try {
+    const raw = await runAzureRAG(req.body.input);
+    res.json(JSON.parse(cleanJSON(raw)));
+  } catch (err) {
+    console.error('Azure Case Study Error:', err.message);
+    res.status(500).json({ error: 'Failed to get case studies via Azure.' });
   }
 });
 

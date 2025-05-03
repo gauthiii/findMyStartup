@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Startup-ult – Idea Parser</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="script.js"></script>
+</head>
+<body class="bg-gradient-to-b from-[#a8e6cf] via-[#dcedc1] to-[#ffd3b6] font-sans text-center min-h-screen overflow-y-auto">
+
+
+    <div class="min-h-screen flex flex-col items-center justify-center space-y-6 p-4">
+        <div style="height: 20vh;"></div>
+    <h1 class="text-4xl font-bold">So, what's your Startup Idea??</h1>
+    <input id="ideaInput" type="text" placeholder="e.g. Uber for Pets" class="w-96 px-6 py-3 rounded-full bg-white/40 text-black placeholder-black/50" />
+    <button onclick="handleGenericReview()" class="bg-[#ff8b94] text-white px-6 py-2 rounded-full">Wanna know what I think about it?</button>
+    <button onclick="goBackToModelSelection()" class="text-sm underline">🔄 Change Model</button>
+    <div id="output1" class="max-w-3xl mt-6"></div>
+    <a id="continueBtn1" href="screen1.1.html" class="hidden px-6 py-2 mt-4 bg-black/10 text-black rounded-full">➡️ Continue</a>
+    <div style="height: 20vh;"></div>
+  </div>
+
+</body>
+</html>

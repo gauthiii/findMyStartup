@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Startup-ult – Risk Analysis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="script.js"></script>
+</head>
+<body class="bg-gradient-to-b from-[#a8e6cf] via-[#dcedc1] to-[#ffd3b6] font-sans text-center min-h-screen overflow-y-auto">
+
+  <div class="min-h-screen flex flex-col items-center justify-center space-y-6 p-4">
+    <div style="height: 20vh;"></div>
+
+    <h1 class="text-3xl font-bold">Startup Risk Analysis</h1>
+    <p class="text-lg" id="recalledIdea1.1"></p>
+
+    <button onclick="handleRiskAnalysis()" class="bg-[#f67280] text-white px-6 py-2 rounded-full hover:bg-[#f05465] transition">
+      Analyze Risks
+    </button>
+
+    <button onclick="goBackToModelSelection()" class="text-sm underline">🔄 Change Model</button>
+
+    <div id="output1.1" class="max-w-3xl mt-6"></div>
+
+    <a id="continueBtn1.1" href="screen2.html" class="hidden px-6 py-2 mt-4 bg-black/10 text-black rounded-full">➡️ Continue</a>
+
+    <div style="height: 20vh;"></div>
+  </div>
+
+</body>
+</html>
