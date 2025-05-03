@@ -10,7 +10,7 @@ From
 
 
 
-<h3>🚀 Demo Walkthrough – Startup Copilot</h3>
+<h3>Demo Walkthrough</h3>
 
 https://github.com/user-attachments/assets/69de9502-928d-4f51-9505-76f953a251b9
 
