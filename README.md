@@ -10,7 +10,16 @@ From
 
 
 
-https://github.com/user-attachments/assets/69de9502-928d-4f51-9505-76f953a251b9
+<h3 align="center">🚀 Demo Walkthrough – Startup Copilot</h3>
+
+<p align="center">
+  <video width="700" controls>
+    <source src="https://github.com/user-attachments/assets/69de9502-928d-4f51-9505-76f953a251b9" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+<p align="center"><i>A quick demo showing how founders use Startup Copilot to go from idea to MVP in minutes.</i></p>
 
 
 
