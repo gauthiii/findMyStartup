@@ -120,13 +120,73 @@ Return strictly in the following JSON format:
     "barriersToEntry": "..."
   }
 }
+  `.trim(),
+
+  funding_strategy: (idea) => `
+You are a funding advisor for early-stage founders.
+
+Given the startup idea: "${idea}", create a funding strategy that includes:
+
+1. Top 3–5 recommended funding sources (grants, accelerators, angels, crowdfunding, etc.)
+2. For each source:
+   - Funding range
+   - Why it's a good fit
+   - How to apply or pitch
+3. Networking Advice:
+   - Where to find investors (e.g., LinkedIn, communities, demo days)
+   - 3 cold DM or email opener templates
+   - Tips on preparing a 5-slide pitch deck
+4. Checklist: “What you need to raise $25k–100k in the next 30 days”
+
+Return only in JSON format like:
+{
+  "recommendedSources": [
+    {
+      "name": "...",
+      "fundingRange": "...",
+      "fit": "...",
+      "howToApply": "..."
+    }
+  ],
+  "networkingTips": {
+    "investorPlaces": ["...", "..."],
+    "dmTemplates": ["...", "...", "..."],
+    "pitchDeckAdvice": "..."
+  },
+  "fundraisingChecklist": ["...", "..."]
+}
+  `.trim(),
+
+  regulatory_scan: (category) => `
+You are a compliance advisor for new startups.
+
+Given the startup category: "${category}", perform a regulatory scan covering:
+
+1. List of applicable regulations (e.g., GDPR, HIPAA, FERPA, SEC)
+2. A brief compliance checklist for each
+3. Common pitfalls startups face in this category
+4. Suggested tools, templates, or design practices to maintain compliance (e.g., SOC2, privacy-first, DPA tools)
+5. If applicable, link or cite any government or legal documents
+
+Keep tone professional and founder-friendly. Output should strictly follow this JSON format:
+{
+  "regulations": [
+    {
+      "name": "...",
+      "checklist": ["...", "..."]
+    }
+  ],
+  "commonPitfalls": ["...", "..."],
+  "suggestedPractices": ["...", "..."],
+  "referenceLinks": ["...", "..."]
+}
   `.trim()
 };
 
-export async function runGeminiAgent(agentType, idea) {
+export async function runGeminiAgent(agentType, input) {
   if (!promptMap[agentType]) throw new Error('Invalid agent type');
 
-  const prompt = promptMap[agentType](idea);
+  const prompt = promptMap[agentType](input);
 
   try {
     const response = await axios.post(
