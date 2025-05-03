@@ -2,6 +2,11 @@
 
 Startup Copilot is a multi-agent web application designed to guide founders from idea validation to execution using AI agents backed by either Azure OpenAI or Gemini (Google's model). This tool assists with reviewing startup ideas, analyzing risk, suggesting tech stacks, developing go-to-market strategies, and researching case studies.
 
+From
+- Ravi Rajappa
+- Shraddha Pandey
+- Gautham Vijayaraj
+
 ## Features
 
 ### 1. Model Selection
