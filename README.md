@@ -61,6 +61,8 @@ The project consists of multiple frontend screens for each agent:
 - **Screen 2**: Tech Stack Recommendation
 - **Screen 3**: Go-To-Market Strategy
 - **Screen 4**: Case Study & Landscape Analysis
+- **Screen 5**: Funding Strategy Agent
+- **Screen 6**: Regulatory Compliance Agent
 
 ### 3. Agents and Functions
 
@@ -70,7 +72,9 @@ The project consists of multiple frontend screens for each agent:
 - `runAzureTechStack(idea)` – Recommends frontend, backend, and database tools.
 - `runAzureGTMPlan(idea)` – Generates detailed GTM plans.
 - `runAzureRAG(idea)` – Performs domain research and provides competitive insights.
-
+- `runAzureFundingPlan(idea)` – Suggests potential funding sources and investor outreach strategies.
+- `runAzureRegulatoryScan(idea)` – Reviews domain-specific compliance and legal risks.
+  
 #### Gemini Agents (in `gemini.js`)
 - `runGeminiAgent(agentType, idea)` – Unified Gemini API using mapped prompts per agent type.
 
