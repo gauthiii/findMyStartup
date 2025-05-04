@@ -1,7 +1,6 @@
 # Startup-ult – Multi-Agent AI System
 
-![ChatGPT Image May 3, 2025, 05_01_39 PM](https://github.com/user-attachments/assets/91eea3e7-94b9-4013-b9c5-5a955ae2e7ab)
-
+<img width="150" src="https://github.com/user-attachments/assets/91eea3e7-94b9-4013-b9c5-5a955ae2e7ab">
 
 From
 - Ravi Rajappa
