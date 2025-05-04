@@ -1,6 +1,6 @@
 # Startup-ult – Multi-Agent AI System
 
-<img width="150" src="https://github.com/user-attachments/assets/91eea3e7-94b9-4013-b9c5-5a955ae2e7ab">
+<img width="450" src="https://github.com/user-attachments/assets/91eea3e7-94b9-4013-b9c5-5a955ae2e7ab">
 
 From
 - Ravi Rajappa
