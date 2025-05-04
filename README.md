@@ -1,6 +1,7 @@
 # Startup-ult – Multi-Agent AI System
 
-Startup Copilot is a multi-agent web application designed to guide founders from idea validation to execution using AI agents backed by either Azure OpenAI or Gemini (Google's model). This tool assists with reviewing startup ideas, analyzing risk, suggesting tech stacks, developing go-to-market strategies, and researching case studies.
+![ChatGPT Image May 3, 2025, 05_01_39 PM](https://github.com/user-attachments/assets/91eea3e7-94b9-4013-b9c5-5a955ae2e7ab)
+
 
 From
 - Ravi Rajappa
