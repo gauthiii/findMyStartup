@@ -1,11 +1,55 @@
 # Startup-ult – Multi-Agent AI System
 
-Startup Copilot is a multi-agent web application designed to guide founders from idea validation to execution using AI agents backed by either Azure OpenAI or Gemini (Google's model). This tool assists with reviewing startup ideas, analyzing risk, suggesting tech stacks, developing go-to-market strategies, and researching case studies.
+<img width="450" src="https://github.com/user-attachments/assets/91eea3e7-94b9-4013-b9c5-5a955ae2e7ab">
 
 From
 - Ravi Rajappa
 - Shraddha Pandey
 - Gautham Vijayaraj
+
+
+
+
+<h3>Demo Walkthrough</h3>
+
+https://github.com/user-attachments/assets/69de9502-928d-4f51-9505-76f953a251b9
+
+
+
+
+## 7 AI Agents in One - Real Time System to evaluate your Startup Idea 💡
+
+<p>
+  <img src="https://github.com/user-attachments/assets/f7ed9e63-e2ca-4866-be1c-47a8bb7a65b0" width="400" />
+  <img src="https://github.com/user-attachments/assets/5dfe3ff4-de18-4219-9be9-a76e45af8555" width="400" />
+
+</p>
+<p>
+
+  <img src="https://github.com/user-attachments/assets/c74b5008-e344-4d91-bd10-d53c51f4a78d" width="400" />
+  <img src="https://github.com/user-attachments/assets/9e5e3185-aebc-42c4-ab13-316cea83bfa7" width="400" />
+</p>
+<p>
+  <img src="https://github.com/user-attachments/assets/ef3e7e60-fbf9-4755-8106-d2e03e683a39" width="400" />
+  <img src="https://github.com/user-attachments/assets/7dc67c9f-8fa6-492c-be9a-0afc3fec2cdc" width="400" />
+ 
+</p>
+<p>
+ 
+  <img src="https://github.com/user-attachments/assets/771134c5-96f1-42a1-a770-b12e63b742dc" width="400" />
+  <img src="https://github.com/user-attachments/assets/8cbcc38f-6788-4793-a92f-0fc6c1dba5a9" width="400" />
+</p>
+
+
+
+
+
+
+
+
+
+
+
 
 ## Features
 
@@ -19,6 +63,8 @@ The project consists of multiple frontend screens for each agent:
 - **Screen 2**: Tech Stack Recommendation
 - **Screen 3**: Go-To-Market Strategy
 - **Screen 4**: Case Study & Landscape Analysis
+- **Screen 5**: Funding Strategy Agent
+- **Screen 6**: Regulatory Compliance Agent
 
 ### 3. Agents and Functions
 
@@ -28,7 +74,9 @@ The project consists of multiple frontend screens for each agent:
 - `runAzureTechStack(idea)` – Recommends frontend, backend, and database tools.
 - `runAzureGTMPlan(idea)` – Generates detailed GTM plans.
 - `runAzureRAG(idea)` – Performs domain research and provides competitive insights.
-
+- `runAzureFundingPlan(idea)` – Suggests potential funding sources and investor outreach strategies.
+- `runAzureRegulatoryScan(idea)` – Reviews domain-specific compliance and legal risks.
+  
 #### Gemini Agents (in `gemini.js`)
 - `runGeminiAgent(agentType, idea)` – Unified Gemini API using mapped prompts per agent type.
 
