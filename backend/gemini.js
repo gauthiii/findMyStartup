@@ -180,7 +180,73 @@ Keep tone professional and founder-friendly. Output should strictly follow this 
   "suggestedPractices": ["...", "..."],
   "referenceLinks": ["...", "..."]
 }
-  `.trim()
+  `.trim(),
+
+    // ✅ Add risk_analysis
+    risk_analysis: (idea) => `
+    You are a risk agent that reviews startup ideas and assesses the risk metric of the idea presented.
+    
+    Thoroughly analyze the risk factor for the startup idea below based on the following metrics:
+    - Financial Risk
+    - Market Risk
+    - Operational Risk
+    - Reputation Risk
+    - Technological Risk
+    - Legal Risk
+    - Compliance Risk
+    - Industry-specific Regulations
+    - Market Opportunity
+    - Any other relevant risks in the startup's target industry
+    
+    Your task is to:
+    1. Break down and assess the idea across all these risk dimensions.
+    2. Calculate a final **confidenceScore** between 0.0 and 1.0.
+    3. Give a recommendation based on the score.
+    
+    Startup Idea: "${idea}"
+    
+    Respond strictly in JSON:
+    {
+      "financialRisk": "...",
+      "marketRisk": "...",
+      "operationalRisk": "...",
+      "reputationRisk": "...",
+      "technologicalRisk": "...",
+      "legalRisk": "...",
+      "complianceRisk": "...",
+      "regulatoryChallenges": "...",
+      "marketOpportunity": "...",
+      "additionalRisks": "...",
+      "confidenceScore": 0.0,
+      "recommendation": "..."
+    }
+    `.trim(),
+    
+      // ✅ Add regulatory_scan
+      regulatory_scan: (idea) => `
+    You are a compliance advisor for new startups.
+    
+    Given the startup category: "${idea}", perform a regulatory scan covering:
+    
+    1. List of applicable regulations (e.g., GDPR, HIPAA, FERPA, SEC)
+    2. A brief compliance checklist for each
+    3. Common pitfalls startups face in this category
+    4. Suggested tools, templates, or design practices to maintain compliance
+    5. Provide credible reference links
+    
+    Respond in strict JSON format:
+    {
+      "regulations": [
+        {
+          "name": "...",
+          "checklist": ["...", "..."]
+        }
+      ],
+      "commonPitfalls": ["...", "..."],
+      "suggestedPractices": ["...", "..."],
+      "referenceLinks": ["...", "..."]
+    }
+    `.trim()
 };
 
 export async function runGeminiAgent(agentType, input) {

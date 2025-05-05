@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       -->
 
       <div class="mb-4">
-        <h4 class="font-semibold text-lg text-gray-700">he Review (Brace Yourself)</h4>
+        <h4 class="font-semibold text-lg text-gray-700">The Review (Brace Yourself)</h4>
         <p class="text-gray-800 mt-1">
           ${result.review}
         </p>
